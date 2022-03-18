@@ -323,7 +323,7 @@ moemen
 
 
                                                         Nested loops and Trainings
-                                                                 */
+                                                                
                                                                 
 
  let products=["keyboard","Mouse","Pen","Pad","Monitor"];
@@ -343,4 +343,59 @@ moemen
     }
 
  }
-
+ 
+ 
+ output:
+ -------
+ ###############
+# keyboard
+ ###############
+ Colors: 
+ red
+ green
+black
+2020
+2021
+###############
+# Mouse
+###############
+ Colors: 
+ red
+ green
+ black
+2020
+2021
+###############
+# Pen
+ ###############
+ Colors: 
+red
+green
+ black
+2020
+ 2021
+###############
+ # Pad
+ ###############
+ Colors: 
+ red
+ green
+black
+2020
+ 2021
+###############
+ # Monitor
+ ###############
+Colors: 
+  red
+ green
+ black
+ 2020
+2021
+ 
+ 
+ 
+ 
+ 
+ 
+ */
