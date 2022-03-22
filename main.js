@@ -1,338 +1,391 @@
-/*                                                Data types Intro
-   string
-   --------
-console.log("moemen"); output: moemen
-console.log(typeof 'moemen'); output:string
-console.log(typeof("moemen")); output:string
 
-   number
-   ------
-console.log(9000); output: 9000
-console.log(typeof(9000));  output: number
-console.log(typeof(900,30));  output: number
-console.log(typeof 900.30); output:number
+/*
+                               Function Rest Paramters
+                                  
+function calc(...numbers){
 
-Array =>object
--------------
-console.log(typeof[10,15,19]); output: object
-console.log(typeof["lola","ali","ahmad"]); output: object
 
-object
-------
-console.log(typeof{name:'osama',age:16,country:'egypt'}); output :object
+     let result=0;
 
-boolean
+    for(let i=0;i<numbers.length;i++){
+        result+= numbers[i];
+    }
+      return `Final Result is ${result}`;
+}
+
+document.write(calc(10,20,30,50));
+
+output: Final Result is 110
 --------
-console.log(typeof true); output: boolean
+                            
+                                          Function Ultimate practice
 
-undefined
----------
-console.log(typeof undefined); output : undefined
 
-Null:
+
+function showInfo(us="Un",ag="Un",rt=0,show="Yes",...sk){
+
+ document.write('<div>');
+ document.write(`<h2>Welcome ${us}</h2>`);
+ document.write(`<p>Age: ${ag}</p>`);
+ document.write(`<p>Hour Rate: $${rt}</p>`);
+
+ if(show==="Yes"){
+     if(sk.length>0){
+
+        document.write(`<p>Skills:${sk.join(" | ")}</p>`);
+
+     }else{
+        document.write(`<p>No Skills</p>`);
+     }
+     
+ }
+ else{
+    document.write(`<p>Skills is Hidden</p>`);
+ }
+ document.write('</div>');
+
+}
+
+showInfo("moemen",33,20,"Yes","html","css");
+
+output:
 ------
-console.log(typeof null); output :null
+
+Welcome moemen
+Age: 33
+
+Hour Rate: $20
+
+Skills:html | css
 
 
-                                                         how do i declare a variable:
+                                                                random arguments function challenge
 
-var/let/const variableName = value
+
+function showDetails(a,b,c){
+    let arr=[a,b,c];
+    let name,age,q;
+     for(let i=0;i<arr.length;i++){
+            
+       if(typeof(arr[i])==="string"){  
+           name =arr[i]; 
+       }
+      else if(typeof(arr[i])==="number"){  
+             age =arr[i];
+    }
+    else if(typeof(arr[i])==="boolean"){ 
+        q= arr[i];
+        if(q===true){
+            work =("Available For Hire");
+        }else if(q===false){
+            work= ("Not Available For Hire");
+        }
+          
+    }
+    }
+
+    document.write(`Hello ${name}, Your age Is ${age},You are ${work}`);
+}
+showDetails("moemen",22,false);   
+
+output:
+-------
+Hello moemen, Your age Is 22,You are Not Available For Hire
+
+
+                                                          Anonymous Function and practice
+
+
+ Anonymous Function : function without a name and maded for special work, and we dont
+ need to call it in other place
+
+ normal function we can call before the function without any wrong like undefined
+ Anonymous Function : we can't call it without declaration
+
+let calculator = function(num1,num2){
+    return num1+num2;
+}
+
+document.write(calculator(10,20));
+
+output:30
+-------
+                                                              Return nested function
+
+nested function: function inside function
+
+example 1
+---------
+
+function sayMesaj(fName,lName){
+    let message=`Hello`;
+    //Nested function 
+    function concatMsg(){
+        message=`${message} ${fName} ${lName}`;
+    }
+    concatMsg();
+    return message;
+}
+
+document.write(sayMesaj("moemen","saade"));
+
+
+output: Hello moemen saade
+------
+
+example 2
+---------
+function sayMesaj(fName,lName){
+    let message=`Hello`;
+    //Nested function 
+    function concatMsg(){
+         return`${message} ${fName} ${lName}`;
+    }
+    return concatMsg();
+}
+
+document.write(sayMesaj("moemen","saade"));
+
+output: Hello moemen saade
+------
+
+
+
+example 3
+---------
+
+function sayMesaj(fName,lName){
+    let message=`Hello`;
+    //Nested function 
+    function concatMsg(){
+        function getFullName(){
+            return `${fName} ${lName}`;      
+        }
+         return`${message} ${getFullName()}`;
+    }
+    return concatMsg();
+}
+
+document.write(sayMesaj("moemen","saade"));
+
+output: Hello moemen saade
+------
+
+                                                                Arrow function Syntax
+
+Arrow functions were introduced in ES6.
+
+Arrow functions allow us to write shorter function syntax:
+we can use it if we have one line in block statement
+if we have only 1 parameters or we don't any have paramters, we can remove ()
+we can replace () by under score _
+
+
+Normal function
+
+let print = function(){
+    return 10;
+}       
+document.write(print());   output: 10
+
+Arrow function
+---------------
+let print = _ => 10; 
+document.write(print());
+
+output: 10
+--------
+
+example 2
+---------
+Normal function
+
+let print = function(num){
+    return num;
+}      
+document.write(print(100));
+
+Arrow function
+-----------------
+let print = num => num;
+  
+document.write(print(100));
+
+output:100
+--------
+
+
+example 3
+---------
+Normal function
+
+let print = (num1,num2){
+    return num1+num2;
+}      
+document.write(print(100,30));
+output: 130
+-------
+
+Arrow function
+-----------------
+
+let print = (num1,num2) =>num1+num2; 
+document.write(print(100,30));
+
+output: 130
+---------
+
+
+                                                                Scope -Block
+
+
+    when we use 'let' in block of scoop, the variable will be privat for the scoop only                                                          
+
 example:
-----------
-var user= "moemen";
-let username = "ali";
-const number = 1;
+---------
+var x=10;
+if(10===10){
+    let x=50;
+}
+document.write(x);
 
-
-                                                          var,let,const cmpare:
-redeclare:
------------
-var : i can redeclare the variable 
-let and const :  i can't redeclare the variable 
-first example:
-------------
-var name ="moemen";
-var name ="ahmad";
-console.log(name); output : ahmad 
-
-second example:
-------------
-let name ="moemen";
-let name ="ali";
-console.log(name); output : Error / i can't redeclare it using let/const
-
-Acess before declare:
---------------------
-example :
-console.log(user);
-var user ="moemen";  output(undefined)
-
-var output(undefined)
-let output(error)
-const output(error)
-
-                                                                 concatenation
-example:
+output: 10
 -------
-let a ="we love";
-let b ="java script";
-document.write(`${a}${b}`);
-output
-------
-we lovejava script
 
------------------------------------
-let a ="we love";
-let b ="java script";
-document.write(`${a}<br>${b}`);
-
-output
-------
-we love
-java script
-
-                                             challenge in video 17 "el zero web school"
-
-let titleName="Elzero",descriptionSite="EL zero web school",theDate="25/10";
-let kart= `
-   <div class="codes">
-     <h3>${titleName}</h3>
-     <p>${descriptionSite}</p>
-     <span>${theDate}</span>
-</div>
-`;
-let torepeat = kart.repeat(4);
-document.write(torepeat);
-
-                                                    Arithmetic operators
-
-document.write(10+10); output : 20
-document.write(10+"moemen"); output : 10moemen
-document.write(10-10); output : 0
-document.write(10-"moemen"); output : NaN
-document.write(10*10); output : 100
-document.write(20/10); output : 2
-document.write(2**4); output : 16
-document.write(10%2); output : 0
-
-let user= 1;
-document.write(++user);
-output:
--------
-2
-
-let user= 1;
-document.write(user++ +'<br>');
-document.write(user);
-output:
--------
-1
-2
-   
-                                              unary plus and negation operators
-
- document.write(+100 +"<br>");
- document.write(+"100" +"<br>");
- document.write(+"moemen" +"<br>");
- document.write(+"12.3" +"<br>");
- document.write(+null +"<br>");
- document.write(+true +"<br>");
- document.write(+false +"<br>");
-
-output:
-100
-100
-NaN
-12.3
-0
-1
-0
-
-
-
-document.write(-100 +"<br>");
-document.write(-"100" +"<br>");
-document.write(-"-100" +"<br>");
-document.write(-"moemen" +"<br>");
-document.write(-"12.3" +"<br>");
-document.write(-null +"<br>");
-document.write(-true +"<br>");
-document.write(-false +"<br>");
-
-output:
--100
--100
-100
-NaN
--12.3
-0
--1
-0
-                                                         assignment operators
-                                                         
-let a=100;
-a = a+100;
-document.write(a); output 200                                                   
-
-
-let a=100;
-a+=100;
-document.write(a); output 200  
-
-let a=100;
-a/=50;
-document.write(a); output 2
-
-with all assignment operators ,it is the same
-
-
-                                                     assignment operators challenge
-Youtube elzero web school video 22
-
-let a=10;
-let b="20";
-let c=80;
-document.write(++a + +b++ + +c++ - +a++); output 100
-document.write(++a + -b + +c++ - -a++ + +a); output 94
-document.write(--c + +b + --a* +b++ - +b*a + --a - +true); output 97
----------------------
-let d="-100";
-let e="20";
-let f=30;
-let g =true;
-
-document.write(+e * -d); otuput 2000
-                                                                Number
-document.write(1000000);   output 1000000
-document.write(1_000_000); output 1000000
-document.write(1e6);       output 1000000
-document.write(10**6);     output 1000000
-document.write(10*10*10*10*10*10); output 1000000
-document.write(1000000.0);  output 1000000
-
-                                                       Number methods    
-toString(): Convert a number to a string:
------------
-document.write((100).toString());   output :100 and it's a string
-document.write(100..toString());    output :100  other example with the same method
-document.write(100.10.toString());  output :100.1
-
-
-
-toFixed :
+example 2:
 --------
-The toFixed() method converts a number to a string.
-The toFixed() method rounds the string to a specified number of decimals.
+var x=10;
+if(10===10){
+    let x=50;
+    document.write(`From if block ${x}`+`<br/>`);
+}
+document.write(`From Global ${x}`);
 
-document.write(100.5555555.toFixed(2)); output :100.56
+output: 
+-------
+From if block 50
+From Global 10
 
-parseInt:
---------
-The parseInt method parses a value as a string and returns the first integer.
+
+                                                             Arrow function challenge
+                                                               
 
 
-document.write(parseInt("100")); output :100 and it's a string
-document.write(Number("100 osama"));
-document.write(+"100 osama");
-document.write(parseInt("100 osama"));
-document.write(parseInt("osama 100 osama"));
-document.write(parseInt("100.500 osama"));
-document.write(parseFloat("100.500 osama"));
+let names = function(...something){
+
+    return "String ["+something.join("],[")+"] => Done !";    
+
+};
+document.write(names("moemen","ahmad","ali","yehya"));
+
+
+converting to arrow function
+------------------------
+let names =(...something) => "String ["+something.join("],[")+"] => Done !";    
+document.write(names("moemen","ahmad","ali","yehya"));
+
+
+------------------------------------
+
+let myNumbers=[20,50,10,60];
+let calc=(one,two,...nums)=> 10+myNumbers[0]+myNumbers[1];
+
+document.write(calc(10,myNumbers[0],myNumbers[1]));
+
+
+
+                                         Higher order function-Map
+
+
+let myNums=[1,2,3,4,5,6];
+
+let newArray=[];
+for(let i=0;i<myNums.length;i++){
+    newArray.push(myNums[i]+myNums[i]);
+}
+document.write(newArray);
+
+
+output: [2,4,6,8,10,12]
+------
+----------------------------
+//same idea with map
+let myNums=[1,2,3,4,5,6];
+
+let addSelf= myNums.map(function(element,index,arr){
+
+    return element+element;
+  
+
+},10 );
+document.write(addSelf);
+
+output: [2,4,6,8,10,12]
+------
+
+
+//same idea with map/arrow function
+let myNums=[1,2,3,4,5,6];
+
+
+let addSelf=myNums.map((element)=> element+element)
+document.write(addSelf);
+
+
+output: [2,4,6,8,10,12]
+------
+
+
+                                                    higher order function map practice
+
+
+let swappingCases ="elZERo";
+let invertedNumbers=[1,-10,-20,15,100,-30];
+let ignoreBooleans="ELzi23er4o";
+
+let sw=swappingCases
+.split("")
+.map(function(element){
+    return element === element.toUpperCase()?element.toLowerCase():element.toUpperCase();}).join("");
+console.log(sw);
+
+
+output:  ELzerO 
+-------
+
+-------------------------------------
+
+
+let swappingCases ="elZERo";
+let invertedNumbers=[1,-10,-20,15,100,-30];
+let ignoreNumbers="ELzi23er4o";
+
+let inv=invertedNumbers.map(function(ele){
+    return -ele;
+})
+console.log(inv);
 
 output:
 ------
-NaN
-NaN
-100
-NaN
-100
-100.5
+[-1, 10, 20, -15, -100, 30]
 
-isInteger:
----------
-document.write(Number.isInteger("100"));
-document.write(Number.isInteger(100.500));
-document.write(Number.isInteger(100));
+
+--------------------------
+let swappingCases ="elZERo";
+let invertedNumbers=[1,-10,-20,15,100,-30];
+let ignoreNumbers="ELz123er4o";
+
+let ing =ignoreNumbers.split("").map(function(ele){
+   return isNaN(parseInt(ele))?ele:"";
+})
+.join("");
+console.log(ing);
+
 
 output:
--------
-false
-false
-true
+------
+ELzero
 
-isNaN:
------
-In JavaScript NaN is short for "Not-a-Number".
-
-The isNaN() method returns true if a value is NaN.
-
-The isNaN() method converts the value to a number before testing it.
-
-isNaN(123); output : false
-isNaN(-1.23); output : false
-isNaN(5-2); output : false
-isNaN(0); output : false
-isNaN('Hello');  output : true
-isNaN('2005/12/12'); output : true
-
-Difference Between isnan() and Number.isnan()
-------------------------------------------
-isNaN() method returns true if a value is Not-a-Number.
-
-Number.isNaN() returns true if a number is Not-a-Number.
-
-In other words:
-
-isNaN() converts the value to a number before testing it.
-
-Examples
----------
-isNaN('Hello');  This returns true;
-Number.isNaN('Hello'); This returns false;
- 
-                                                               Math object
-
-Math.round 
------------
-:if the number after virgul is more then 4 , the whole number will increase by one 
-document.write(Math.round(99.5)); output : 100
-document.write(Math.round(99.4));  output : 99
-document.write(Math.round(99.2)); output : 99
+ */
 
 
-Math.ceil: 
----------
-it will increase to the next number direckt 
-document.write(Math.ceil(99.1)); output : 100
-
-Math.floor: 
------------
-it will disincrease to the next number direckt
-document.write(Math.floor(99.9));  output : 99
-
-Math.max:
----------
-it will give the higher number 
-document.write(Math.max(49,44,-33,33,2));  output : 49 
-
-Math.min:
----------
-it will give the lower number 
-document.write(Math.min(49,44,-33,33,2));  output : -33
-
-Math.pow:
----------
-it will give the power of a number
-document.write(Math.pow(2,4));  output : 16
-
-Math.random:
-----------
-it will give a number randomly
-document.write(Math.random()); output : when do you refresh the page a new number will be appear
-
-
-Math.trunc:
-------------
-it will remove all number after the decimal point
-document.write(Math.trunc(99.5));  output : 99
-*/
